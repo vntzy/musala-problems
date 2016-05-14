@@ -56,6 +56,29 @@ public abstract class Shape {
 		c.setName("Circle");
 		System.out.println("The Circle has\n Area: " + c.getArea() + " \n Perimetar:" + c.getPerimeter()
 				+ "\n and Color: " + c.getColor() + "\n The shape is " + c.getName());
+				
+				
+					System.out.println(" ");
+
+		ComplexShape complex = new ComplexShape(r, c, s);
+
+		complex.setMainShapeChooser(); // make the shape with biggest area as
+										// first in the list
+
+		String maincolor = complex.useMainColor();/// as main color takes the
+													/// color of the first shape
+													/// in the list
+
+		r.setColor(maincolor);
+		s.setColor(maincolor);
+		c.setColor(maincolor);
+
+		System.out.println("The COMPLEX SHAPE is consisteod of:\n " + r.getName() + " with color " + r.getColor() + "\n"
+				+ c.getName() + " with color " + c.getColor() + "\n and " + s.getName() + " with color "
+				+ c.getColor());
+		System.out.println("The area of the COMLPEX SHAPE is " + complex.totalArea());
+
+	
 
 	}
 }
