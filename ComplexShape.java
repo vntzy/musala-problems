@@ -2,39 +2,21 @@
 package shape;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 public class ComplexShape {
-
-	private List<Shape> shapes = new ArrayList<>();
-
-	public ComplexShape(Rectangle1 r, Circle1 c, Squareeee s) {
-
-		shapes.add(r);
-		shapes.add(c);
-		shapes.add(s);
+	Setmain strategy;
+	
+	List<Shape> shapes = new ArrayList<>();
+	public ComplexShape(Shape... shapes) {
+		this.shapes.add(shapes[0]);
+		this.shapes.add(shapes[1]);
+		this.shapes.add(shapes[2]);
 	}
 
-	public void setMainShapeChooser() {
-		Shape area = shapes.get(0);
-		int i;
-		for (i = 0; i < shapes.size(); i++) {
-			if (shapes.get(i).getArea() > area.getArea()) {
-				area = shapes.get(i);
+	public void SetMainStrategy(Setmain strategy) {
 
-			}
-
-		}
-		shapes.remove(area);
-		shapes.add(0, area);
-
-	}
-
-	public String useMainColor() {
-
-		return shapes.get(0).getColor();
-
+		this.strategy = strategy;
 	}
 
 	public double totalArea() {
@@ -47,4 +29,82 @@ public class ComplexShape {
 		return a;
 
 	}
+
+	public void complex1() {
+
+		System.out.println("The COMPLEX SHAPE is consisteod of:\n " + shapes.get(0).getName() + " with color "
+				+ shapes.get(0).getColor() + "\n" + shapes.get(1).getName() + " with color " + shapes.get(1).getColor()
+				+ "\n and " + shapes.get(2).getName() + " with color " + shapes.get(2).getColor());
+
+	}
+
+	public List<Shape> printshape() {
+
+		return shapes;
+	}
+
+	public void prva(Shape r, Shape c, Shape s) {
+		shapes.clear();
+		shapes.add(r);
+		shapes.add(c);
+		shapes.add(s);
+
+	}
+
+	void useMainColor(){
+		Shape main = strategy.letmain(shapes);
+		
+		for(Shape shape : shapes){
+			
+		shape.setColor(main.getColor());
+		}
+		
+		}
+		
+		
+		
+	}
+
+class LastElement implements Setmain {
+
+	
+
+	@Override
+	public Shape letmain(List<Shape> s) {
+		// TODO Auto-generated method stub
+		return s.get(s.size() - 1);
+	}
+
+}
+
+class FirstElement implements Setmain {
+
+	
+
+	@Override
+	public Shape letmain(List<Shape> s) {
+		// TODO Auto-generated method stub
+		return s.get(0);
+	}
+
+}
+
+class BigestArea implements Setmain {
+
+	public Shape letmain(List<Shape> s)  {
+		Shape a;
+		a = s.get(0);
+		int i;
+		for (i = 1; i < s.size(); i++) {
+			if (s.get(i).getArea() > a.getArea()) {
+				a = s.get(i);
+
+			}
+
+		}
+		s.remove(a);
+		s.add(0, a);
+		return a;
+	}
+
 }
