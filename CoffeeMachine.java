@@ -110,7 +110,7 @@ final class CoffeeMachine {
 	}
 
 	List<Item> order = new ArrayList<Item>();
-	double f = coin;
+
 
 	public void makeOrder() {
 		Scanner choose = new Scanner(System.in);
