@@ -130,7 +130,7 @@ final class CoffeeMachine {
 
 			int a = choose.nextInt();
 			switch (a) {
-			case 10:
+			case 10: ///
 				if (coin > new Milk().price()) {
 					coin -= new Milk().price();
 					order.add(new Milk());
