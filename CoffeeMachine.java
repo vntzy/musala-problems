@@ -103,10 +103,8 @@ final class CoffeeMachine {
 	public static CoffeeMachine getInstance() {
 		if (instance == null) {
 			instance = new CoffeeMachine();
-			return instance;
-		} else {
-			return null;
 		}
+		return instance;
 	}
 
 	List<Item> order = new ArrayList<Item>();
