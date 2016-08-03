@@ -131,7 +131,7 @@ final class CoffeeMachine {
 			int a = choose.nextInt();
 			switch (a) {
 			case 10:
-				if (coin > new Milk().price()) {
+				if (coin > new Milk().price()) { // 3 instances 
 					coin -= new Milk().price();
 					order.add(new Milk());
 					showItems();
